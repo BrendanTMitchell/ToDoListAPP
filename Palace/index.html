@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Palace</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div id="loading">
+		<h1>Palace</h1>
+		<p id="loading-text">Loading the game engine (needs an internet connection the first time)...</p>
+	</div>
+
+	<main id="setup" hidden>
+		<header>
+			<h1>Palace</h1>
+			<div class="toolbar">
+				<button class="open-rules" type="button">Rules</button>
+				<button class="open-admin" type="button">Admin</button>
+			</div>
+		</header>
+		<div class="columns">
+			<section>
+				<h2>Your character</h2>
+				<div id="character-list" class="list"></div>
+				<div id="character-details" class="panel"></div>
+			</section>
+			<section>
+				<h2>Game setup</h2>
+				<div class="panel">
+					<label>Players <input id="player-count" type="number" min="2" value="6"></label>
+					<label>Decks <input id="deck-count" type="number" min="1" value="3"></label>
+					<label>Jokers <input id="joker-count" type="number" min="0" value="8"></label>
+					<label class="check"><input id="start-joker" type="checkbox"> Everyone starts with a bonus Joker</label>
+					<div id="player-rows"></div>
+					<button id="restore-defaults" type="button">Restore defaults</button>
+					<p class="hint">Decks hold 52 cards each, without Jokers. With several human players, the device is passed between them.</p>
+				</div>
+				<p id="setup-error" class="error"></p>
+				<button id="start" type="button" class="primary">Start game</button>
+			</section>
+		</div>
+	</main>
+
+	<main id="game" hidden>
+		<header>
+			<div id="status"></div>
+			<div class="toolbar">
+				<button id="show-log" type="button">Action log</button>
+				<button id="show-sheets" type="button">Characters</button>
+				<button class="open-rules" type="button">Rules</button>
+				<button class="open-admin" type="button">Admin</button>
+				<button id="new-game" type="button">New game</button>
+			</div>
+		</header>
+		<section id="piles"></section>
+		<section id="players"></section>
+		<section id="hand-area">
+			<h2 id="hand-title"></h2>
+			<div id="draw-choice"></div>
+			<div id="cards" class="cards"></div>
+			<div id="actions" class="actions"></div>
+		</section>
+	</main>
+
+	<main id="rules-page" hidden>
+		<header>
+			<h1>Palace rules</h1>
+			<div class="toolbar"><button id="rules-back" type="button" class="primary">Back to game</button></div>
+		</header>
+		<div id="rules-content"></div>
+	</main>
+
+	<div id="modal" class="overlay" hidden>
+		<div class="dialog">
+			<h3 id="modal-title"></h3>
+			<div id="modal-body"></div>
+			<div id="modal-buttons"></div>
+		</div>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>
